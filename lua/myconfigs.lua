@@ -1,4 +1,4 @@
-vim.opt.statuscolumn = '%=%s%C%{v:relnum?v:relnum:v:lnum} '
+vim.opt.statuscolumn = '%=%C%{v:relnum?v:relnum:v:lnum}%s'
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
