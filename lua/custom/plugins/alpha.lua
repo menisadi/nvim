@@ -11,9 +11,9 @@ return {
     }
     dashboard.section.buttons.val = {
       dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
-      dashboard.button('SPC w O', '  Open file explorer'),
+      dashboard.button('SPC O', '  Open file explorer'),
       dashboard.button('SPC s f', '󰐱  Fuzzy find file'),
-      dashboard.button('SPC ?', '󰋚  Recently opened files'),
+      dashboard.button('SPC s .', '󰋚  Recently opened files'),
       dashboard.button('q', '󰅚  Quit NVIM', ':qa<CR>'),
     }
     dashboard.config.opts.noautocmd = true
