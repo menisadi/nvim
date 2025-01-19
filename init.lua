@@ -31,7 +31,6 @@ vim.opt.list = true -- NOTE: white-spaces configuration
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split' -- NOTE: Preview substitutions live,
 vim.opt.cursorline = true
-vim.opt.scrolloff = 0 -- TODO: remove this (0 is default)
 
 -- [[ Basic Keymaps ]]
 -- Clear highlights on search when pressing <Esc> in normal mode
