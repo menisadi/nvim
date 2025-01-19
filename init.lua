@@ -7,16 +7,14 @@ vim.g.have_nerd_font = true
 -- [[ Setting options ]]
 vim.opt.number = true
 vim.opt.relativenumber = true
--- Enable mouse mode TODO: Read about this
 vim.opt.mouse = 'a'
-vim.opt.showmode = false -- No need, we got status line
+vim.opt.showmode = false -- No need for mode, we got status line
 
 --  NOTE: Sync clipboard. Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
--- Enable break indent TODO: read about this
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
@@ -32,12 +30,8 @@ vim.opt.splitbelow = true
 vim.opt.list = true -- NOTE: white-spaces configuration
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split' -- NOTE: Preview substitutions live,
-
--- Show which line your cursor is on
 vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 0
+vim.opt.scrolloff = 0 -- TODO: remove this (0 is default)
 
 -- [[ Basic Keymaps ]]
 -- Clear highlights on search when pressing <Esc> in normal mode
