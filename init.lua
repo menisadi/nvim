@@ -33,8 +33,6 @@ vim.opt.inccommand = 'split' -- NOTE: Preview substitutions live,
 vim.opt.cursorline = true
 
 -- [[ Basic Keymaps ]]
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -830,6 +828,7 @@ require('lazy').setup({
 require 'mykeymaps'
 require 'myautocmds'
 require 'myconfigs'
+require('keychain').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
