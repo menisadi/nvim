@@ -14,7 +14,7 @@ function ToggleHebrewMode()
     vim.opt_local.keymap = '' -- Clear the insert-mode keymap
     vim.opt_local.iminsert = 0
     vim.opt_local.imsearch = 0
-    vim.wo.rightleft = false
+    vim.opt_local.rightleft = false
     vim.b.hebrew_mode_enabled = false
     vim.notify('Hebrew mode: OFF', vim.log.levels.INFO)
   end
