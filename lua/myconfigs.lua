@@ -17,3 +17,7 @@ vim.opt.foldminlines = 1
 vim.opt.foldlevel = 99
 
 vim.opt.splitbelow = true
+
+if vim.g.neovide then
+  vim.o.guifont = 'Maple Mono NF:h22'
+end
