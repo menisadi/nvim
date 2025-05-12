@@ -546,6 +546,17 @@ require('lazy').setup({
           end,
         },
       }
+      -- ─── Gleam (NOT managed by Mason) ────────────────────────────────────────────
+      if vim.fn.executable 'gleam' == 1 then
+        require('lspconfig').gleam.setup {
+          cmd = { 'gleam', 'lsp' }, -- explicit for clarity
+          filetypes = { 'gleam' }, -- default, but here if you strip others
+          root_dir = require('lspconfig').util.root_pattern('gleam.toml', '.git'),
+          capabilities = capabilities,
+        }
+      else
+        vim.notify('Gleam executable not found – skipping Gleam LSP setup', vim.log.levels.WARN)
+      end
     end,
   },
 
