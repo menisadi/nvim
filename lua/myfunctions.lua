@@ -18,6 +18,18 @@ local guicursor_rtl = table.concat({
 -- Default to LTR cursor shapes
 vim.o.guicursor = guicursor_ltr
 
+local function enable_hebrew_spell()
+  vim.opt_local.spelllang = { 'he', 'en_us' }
+  vim.opt_local.spellcapcheck = ''
+  vim.opt_local.spellsuggest = 'best,9'
+end
+
+local function enable_english_spell()
+  vim.opt_local.spelllang = { 'en_us' }
+  vim.opt_local.spellcapcheck = vim.api.nvim_get_option_value('spellcapcheck', { scope = 'global' })
+  vim.opt_local.spellsuggest = 'best,9'
+end
+
 local function ToggleHebrewMode()
   local heb_mode = vim.b.hebrew_mode_enabled
 
@@ -32,6 +44,8 @@ local function ToggleHebrewMode()
     -- Switch insert cursor to steady underline
     vim.o.guicursor = guicursor_rtl
 
+    enable_hebrew_spell()
+
     vim.notify('Hebrew mode: ON', vim.log.levels.INFO)
   else
     -- --- Turn Hebrew mode OFF (LTR) ---
@@ -43,6 +57,8 @@ local function ToggleHebrewMode()
 
     -- Switch insert cursor back to steady bar
     vim.o.guicursor = guicursor_ltr
+
+    enable_english_spell()
 
     vim.notify('Hebrew mode: OFF', vim.log.levels.INFO)
   end
