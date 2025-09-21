@@ -329,8 +329,8 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
@@ -534,26 +534,26 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      -- Register LSP configs with Neovim (no lspconfig.setup here)
+      for name, cfg in pairs(servers) do
+        cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+        vim.lsp.config(name, cfg)
+      end
+
+      -- Auto-start the servers you defined when their filetypes match
+      vim.lsp.enable(vim.tbl_keys(servers))
+
       -- ─── Gleam (NOT managed by Mason) ────────────────────────────────────────────
       if vim.fn.executable 'gleam' == 1 then
-        require('lspconfig').gleam.setup {
-          cmd = { 'gleam', 'lsp' }, -- explicit for clarity
-          filetypes = { 'gleam' }, -- default, but here if you strip others
-          root_dir = require('lspconfig').util.root_pattern('gleam.toml', '.git'),
+        vim.lsp.config('gleam', {
+          cmd = { 'gleam', 'lsp' },
+          filetypes = { 'gleam' },
+          -- In 0.11 you can use root markers or a root_dir() function.
+          -- Simple case: use markers (works for most projects).
+          root_markers = { 'gleam.toml', '.git' },
           capabilities = capabilities,
-        }
+        })
+        vim.lsp.enable 'gleam'
       else
         vim.notify('Gleam executable not found – skipping Gleam LSP setup', vim.log.levels.WARN)
       end
@@ -758,20 +758,6 @@ require('lazy').setup({
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
-      require('mini.surround').setup()
-      -- require('mini.animate').setup() # NOTE: this is causing problems
-
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
     end,
   },
   { -- Highlight, edit, and navigate code
