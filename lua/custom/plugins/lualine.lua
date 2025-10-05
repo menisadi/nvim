@@ -3,7 +3,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = 'onedark',
+      theme = 'kanagawa',
       component_separators = '|',
       section_separators = '',
       globalstatus = true,
@@ -15,11 +15,13 @@ return {
       lualine_a = {
         {
           'navic',
-          highlight = true,
+          highlight = false,
           navic_opts = {
             separator = ' > ',
             depth_limit = 4,
           },
+          color = { bg = '#2A2A37', fg = '#FFA066' },
+          draw_empty = true,
         },
       },
     },
