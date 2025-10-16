@@ -7,8 +7,8 @@ return {
         enabled = false,
       },
       char = {
-        jump_labels = true,
-        highlight = { backdrop = false, matches = true },
+        jump_labels = false,
+        -- highlight = { backdrop = false, matches = true },
         multi_line = false,
       },
     },
