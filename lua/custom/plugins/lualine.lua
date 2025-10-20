@@ -1,3 +1,10 @@
+local function hebrew_mode_indicator()
+  if vim.b.hebrew_mode_enabled then
+    return 'א'
+  end
+  return ''
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   opts = {
@@ -8,6 +15,11 @@ return {
     },
     tabline = {
       lualine_a = { { 'buffers', hide_filename_extension = true } },
+      lualine_z = {
+        {
+          hebrew_mode_indicator,
+        },
+      },
     },
     winbar = {
       lualine_a = {
