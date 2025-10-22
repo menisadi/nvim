@@ -1,9 +1,0 @@
-return {
-  'folke/which-key.nvim',
-  opts = {
-    spec = {
-      { '<leader>a', group = '[A]vante' },
-      { '<leader>x', group = 'Trouble' },
-    },
-  },
-}
