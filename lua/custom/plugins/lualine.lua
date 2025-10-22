@@ -7,10 +7,24 @@ end
 
 return {
   'nvim-lualine/lualine.nvim',
+  event = 'BufWinEnter',
+  dependencies = {
+    -- nvim-navic defined as a dependency of lualine.
+    -- So it inherits lualine's 'event'.
+    {
+      'SmiteshP/nvim-navic',
+      dependencies = { 'neovim/nvim-lspconfig' },
+      opts = {
+        lsp = {
+          auto_attach = true,
+        },
+      },
+    },
+  },
   opts = {
     options = {
       icons_enabled = true,
-      theme = 'kanagawa',
+      -- theme = 'kanagawa',
       globalstatus = true,
     },
     tabline = {
