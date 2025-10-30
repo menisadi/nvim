@@ -11,4 +11,12 @@ return {
       default_direction = 'prefer_left',
     },
   },
+  keys = {
+
+    {
+      '<leader>lo',
+      '<cmd>AerialToggle<CR>',
+      desc = 'Aerial Toggle',
+    },
+  },
 }

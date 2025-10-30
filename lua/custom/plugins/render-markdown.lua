@@ -6,7 +6,33 @@ return {
   ---@type render.md.UserConfig
   opts = {},
   keys = {
-    { '<leader>rm', '<cmd>RenderMarkdown<cr>', desc = 'Render Markdown' },
-    { '<leader>rd', '<cmd>RenderMarkdown disable<cr>', desc = 'Disable Render Markdown' },
+    {
+      '<leader>rt',
+      function()
+        require('render-markdown').buf_toggle()
+      end,
+      desc = '[R]ender MD: [T]oggle (buffer)',
+    },
+    {
+      '<leader>rd',
+      function()
+        require('render-markdown').buf_enable()
+      end,
+      desc = '[R]en[d]er MD: Enable (buffer)',
+    },
+    {
+      '<leader>rD',
+      function()
+        require('render-markdown').buf_disable()
+      end,
+      desc = '[R]ender MD: [D]isable (buffer)',
+    },
+    {
+      '<leader>rp',
+      function()
+        require('render-markdown').preview()
+      end,
+      desc = '[R]ender MD: [P]review split',
+    },
   },
 }
