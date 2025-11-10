@@ -427,7 +427,7 @@ require('lazy').setup({
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -454,7 +454,8 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
@@ -464,11 +465,14 @@ require('lazy').setup({
 
       -- Change diagnostic symbols in the sign column (gutter)
       if vim.g.have_nerd_font then
-        local signs = { Error = '', Warn = '', Hint = '', Info = '' }
-        for type, icon in pairs(signs) do
-          local hl = 'DiagnosticSign' .. type
-          vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
+        vim.diagnostic.config {
+          signs = {
+            [vim.diagnostic.severity.ERROR] = { text = '', texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError' },
+            [vim.diagnostic.severity.WARN] = { text = '', texthl = 'DiagnosticSignWarn', numhl = 'DiagnosticSignWarn' },
+            [vim.diagnostic.severity.HINT] = { text = '', texthl = 'DiagnosticSignHint', numhl = 'DiagnosticSignHint' },
+            [vim.diagnostic.severity.INFO] = { text = '', texthl = 'DiagnosticSignInfo', numhl = 'DiagnosticSignInfo' },
+          },
+        }
       end
 
       -- LSP servers and clients are able to communicate to each other what features they support.
