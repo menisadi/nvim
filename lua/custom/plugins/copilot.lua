@@ -19,8 +19,8 @@ return {
       enabled = true,
       auto_trigger = true,
       keymap = {
-        accept_and_goto = '<leader>p',
-        dismiss = '<C-/>',
+        accept_and_goto = '<M-a>',
+        dismiss = '<M-d>',
       },
     },
   },
