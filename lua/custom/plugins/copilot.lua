@@ -16,11 +16,11 @@ return {
       auto_trigger = true,
     },
     nes = {
-      enabled = true,
-      auto_trigger = true,
+      enabled = false,
+      auto_trigger = false,
       keymap = {
-        accept_and_goto = '<M-a>',
-        dismiss = '<M-d>',
+        accept_and_goto = false,
+        dismiss = false,
       },
     },
   },
