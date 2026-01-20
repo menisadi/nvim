@@ -1,7 +1,7 @@
 -- Simple example of creating an autocommand in Neovim using Lua
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = '*',
-  callback = function()
-    print 'File saved! 🥳'
-  end,
-})
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   pattern = '*',
+--   callback = function()
+--     print 'File saved! 🥳'
+--   end,
+-- })
