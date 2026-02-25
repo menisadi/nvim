@@ -44,7 +44,7 @@ return {
             separator = ' > ',
             depth_limit = 4,
           },
-          color = { bg = '#2A2A37', fg = '#FFA066' },
+          -- color = { bg = '#2A2A37', fg = '#FFA066' },
           draw_empty = true,
         },
       },
