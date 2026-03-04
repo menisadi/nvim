@@ -60,9 +60,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } }, {})
 
 -- [[ my stuff]]
-require("mykeymaps")
-require("myautocmds")
-require("myconfigs")
-require("myfunctions")
+-- require("mykeymaps")
+-- require("myautocmds")
+-- require("myconfigs")
+-- require("myfunctions")
 
 -- vim: ts=2 sts=2 sw=2 et
