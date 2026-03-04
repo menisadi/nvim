@@ -30,12 +30,6 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split" -- NOTE: Preview substitutions live,
 vim.opt.cursorline = true
 
--- [[ Basic Keymaps ]]
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
 -- [[ Basic Autocommands ]]
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
@@ -60,7 +54,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } }, {})
 
 -- [[ my stuff]]
--- require("mykeymaps")
+require("mykeymaps")
 -- require("myautocmds")
 -- require("myconfigs")
 -- require("myfunctions")
