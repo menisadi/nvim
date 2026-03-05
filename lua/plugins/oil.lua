@@ -6,7 +6,7 @@ return {
     },
   },
   keys = {
-    { '<leader>O', '<cmd>Oil<cr>', desc = 'Open oil' },
+    { '<leader>O', '<cmd>Oil<cr>', desc = 'Open oil', icon = '' },
     { '-', '<cmd>Oil<cr>', desc = 'Open parent directory' },
   },
   dependencies = { 'nvim-tree/nvim-web-devicons' },
