@@ -90,6 +90,9 @@ return {
 				harper_ls = {
 					filetypes = { "markdown" },
 				},
+				marksman = {},
+				ruff = {},
+				tinymist = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -103,7 +106,7 @@ return {
 
 			require("mason").setup()
 
-			local ensure_installed = { "lua-language-server", "basedpyright", "stylua", "harper-ls" }
+			local ensure_installed = { "lua-language-server", "basedpyright", "stylua", "harper-ls", "marksman", "ruff", "tinymist" }
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			for name, cfg in pairs(servers) do
