@@ -87,6 +87,9 @@ return {
 
 			local servers = {
 				basedpyright = {},
+				harper_ls = {
+					filetypes = { "markdown" },
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -100,7 +103,7 @@ return {
 
 			require("mason").setup()
 
-			local ensure_installed = { "lua-language-server", "basedpyright", "stylua" }
+			local ensure_installed = { "lua-language-server", "basedpyright", "stylua", "harper-ls" }
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			for name, cfg in pairs(servers) do
